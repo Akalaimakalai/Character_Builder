@@ -33,6 +33,22 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+
+  # ===MY CONFIGS===
+
+  # add module from FactoryBot to rspec
+  config.include FactoryBot::Syntax::Methods
+  # Add devise's helpers for controllers
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  # Add my own helpers
+  config.include ControllerHelpers, type: :controller
+  config.include FeatureHelpers, type: :feature
+  config.include ApiHelpers, type: :request
+  # Capybara runs js tests in browser
+  Capybara.javascript_driver = :selenium_chrome_headless
+
+  # ---END---
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -60,4 +76,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
