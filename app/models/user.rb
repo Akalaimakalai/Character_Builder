@@ -9,5 +9,7 @@ class User < ApplicationRecord
          :validatable,
          :confirmable
 
+  has_many :characters
+
   validates :name, presence: true
 end
