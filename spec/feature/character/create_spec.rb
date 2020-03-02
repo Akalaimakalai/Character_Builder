@@ -13,11 +13,11 @@ feature 'User can create character', %q{
       sign_in(user)
       visit user_path(user)
 
-      click_on 'Create new character'
+      click_on 'Создать персонажа'
 
       fill_in 'Name', with: 'TestCharName'
 
-      click_on 'Create'
+      click_on 'Создать'
 
       expect(page).to have_content('TestCharName')
     end
