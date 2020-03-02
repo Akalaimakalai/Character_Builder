@@ -41,7 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Instead erb
 gem 'slim-rails'
 # Authentication
-# gem 'devise'
+gem 'devise'
 
 # ---END---
 
@@ -55,6 +55,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta3'
   # Gem for creating test dataset
   gem 'factory_bot_rails'
+  # Library for stubbing and setting expectations on HTTP requests in Ruby.
+  gem 'webmock'
   # Upgraded byebug (binding.pry)
   gem 'pry-rails'
   gem 'pry-byebug'
@@ -69,6 +71,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # ===MY GEMS===
+
+  # Auto opening letters from ActionMailer
+  gem "letter_opener"
+
+  # ---END---
 end
 
 group :test do
@@ -87,6 +96,8 @@ group :test do
   gem 'launchy'
   # Instead gem 'chromedriver-helper'
   gem 'webdrivers', '~> 4.0'
+  # Opening letters in tests
+  gem 'capybara-email'
 
   # ---end---
 end
