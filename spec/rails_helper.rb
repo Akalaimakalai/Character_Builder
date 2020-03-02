@@ -36,14 +36,14 @@ RSpec.configure do |config|
 
   # ===MY CONFIGS===
 
-  # add module from FactoryBot to rspec
+  # add module from FactoryBot for shot syntax (don't write "FactoryBot." before everyone create)
   config.include FactoryBot::Syntax::Methods
   # Add devise's helpers for controllers
-  config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.include Devise::Test::ControllerHelpers, type: :controller
   # Add my own helpers
-  config.include ControllerHelpers, type: :controller
-  config.include FeatureHelpers, type: :feature
-  config.include ApiHelpers, type: :request
+  # config.include ControllerHelpers, type: :controller
+  # config.include FeatureHelpers, type: :feature
+  # config.include ApiHelpers, type: :request
   # Capybara runs js tests in browser
   Capybara.javascript_driver = :selenium_chrome_headless
 
