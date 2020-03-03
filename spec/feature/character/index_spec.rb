@@ -9,7 +9,7 @@ feature 'User can see list of his characters', %q{
   given!(:character) { create_list(:character, 2, user: user) }
 
   describe 'Authenticated user' do
-    scenario 'user visit medal page' do
+    scenario 'user can see list of characters through his profile' do
       sign_in(user)
       visit user_path(user)
 
