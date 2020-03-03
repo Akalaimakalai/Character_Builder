@@ -52,7 +52,7 @@ RSpec.describe CharactersController, type: :controller do
     end
   end
 
-  describe 'GET #new' do
+  describe 'POST #create' do
 
     context 'Authenticated user' do
       before { login(user) }
@@ -69,6 +69,10 @@ RSpec.describe CharactersController, type: :controller do
       end
 
       context ' creates character with invalid params' do
+        it 'does not save char in database' do
+          expect { post :create, params: { character: { name: '' } } }.to_not change(Character, :count)
+        end
+
         it 'renders new view' do
           post :create, params: { character: { name: '' } }
           expect(response).to render_template :new
@@ -77,6 +81,10 @@ RSpec.describe CharactersController, type: :controller do
     end
 
     context 'Unauthenticated user' do
+      it 'does not save char in database' do
+        expect { post :create, params: { character: { name: '' } } }.to_not change(Character, :count)
+      end
+
       it_behaves_like 'unauthenticated' do
         before { post :create, params: { character: { name: 'NewChar' } } }
       end
