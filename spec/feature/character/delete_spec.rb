@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User can delete his character', %q{
   In order to delete a useless character
-  As the creater of this character
+  As the creator of this character
   i'd like to be able to delete it
 } do
 
@@ -13,7 +13,7 @@ feature 'User can delete his character', %q{
     let!(:character){ create(:character, user: user)}
     let(:user2){ create(:user) }
 
-    scenario 'is the creater of this character' do
+    scenario 'is the creator of this character' do
       sign_in(user)
       visit characters_path
 
@@ -22,9 +22,10 @@ feature 'User can delete his character', %q{
       click_on 'Удалить'
 
       expect(page).to_not have_link(character.name)
+      expect(page).to have_content('У вас нет персонажей')
     end
 
-    scenario 'is NOT the creater of this character' do
+    scenario 'is NOT the creator of this character' do
       sign_in(user2)
       visit characters_path
       expect(page).to_not have_link('Удалить')

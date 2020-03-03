@@ -134,9 +134,9 @@ RSpec.describe CharactersController, type: :controller do
           expect { delete :destroy, params: { id: character } }.to change(Character, :count).by(-1)
         end
 
-        it 'renders index view' do
+        it 'redirects to characters_path' do
           delete :destroy, params: { id: character }
-          expect(response).to render_template :index
+          expect(response).to redirect_to characters_path
         end
       end
 
@@ -149,9 +149,9 @@ RSpec.describe CharactersController, type: :controller do
           expect { delete :destroy, params: { id: character } }.to_not change(Character, :count)
         end
 
-        it 'renders index view' do
+        it 'redirects to characters_path' do
           delete :destroy, params: { id: character }
-          expect(response).to render_template :index
+          expect(response).to redirect_to characters_path
         end
       end
     end

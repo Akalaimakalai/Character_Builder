@@ -1,6 +1,10 @@
 <p>
-  Список персонажей:
-  <ol>
-    <%= render @characters %>
-  </ol>
+  <% if @characters && !@characters.empty? %>
+    Список персонажей:
+    <ol>
+      <%= render @characters %>
+    </ol>
+  <% else %>
+    У вас нет персонажей
+  <% end %>
 </p>
