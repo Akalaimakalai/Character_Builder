@@ -4,6 +4,32 @@ RSpec.describe CharactersController, type: :controller do
   let(:user) { create(:user) }
   let(:character) { create(:character, user: user) }
 
+  describe 'GET #index' do
+
+  context 'Authenticated user' do
+    let(:characters) { create_list(:character, 3, user: user) }
+
+    before do
+      login(user)
+      get :index
+    end
+
+    it "loads all user's characters into @characters" do
+      expect(assigns(:characters)).to eq characters
+    end
+
+    it 'renders index view' do
+      expect(response).to render_template :index
+    end
+  end
+
+  context 'Unauthenticated user' do
+    it_behaves_like 'unauthenticated' do
+      before { get :index }
+    end
+  end
+end
+
   describe 'GET #show' do
 
     context 'Authenticated user' do
