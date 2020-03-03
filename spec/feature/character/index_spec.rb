@@ -6,23 +6,26 @@ feature 'User can see list of his characters', %q{
   I'd like to be able to see the list of characters
 } do
   given(:user) { create(:user) }
-  given!(:character) { create_list(:character, 2, user: user) }
 
   describe 'Authenticated user' do
-    scenario 'user can see list of characters through his profile' do
+    given!(:characters) { create_list(:character, 2, user: user) }
+    given!(:another_character) { create(:character) }
+
+    scenario 'user can see list of HIS characters through the profile' do
       sign_in(user)
       visit user_path(user)
 
       click_on 'Мои персонажи'
 
-      character.each do |character|
+      characters.each do |character|
         expect(page).to have_link character.name
       end
+      expect(page).to_not have_link another_character.name
     end
   end
 
   describe 'Unauthenticated user' do
-    scenario 'tries entering his profile' do
+    scenario 'tries entering to his profile' do
       visit user_path(user)
       expect(page).to have_content('You need to sign in or sign up before continuing.')
     end

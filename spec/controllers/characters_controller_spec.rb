@@ -8,6 +8,7 @@ RSpec.describe CharactersController, type: :controller do
 
   context 'Authenticated user' do
     let(:characters) { create_list(:character, 3, user: user) }
+    let(:another_character) { create(:character) }
 
     before do
       login(user)
@@ -16,6 +17,10 @@ RSpec.describe CharactersController, type: :controller do
 
     it "loads all user's characters into @characters" do
       expect(assigns(:characters)).to eq characters
+    end
+
+    it "does not load other characters" do
+      expect(assigns(:characters)).to_not be_include(another_character)
     end
 
     it 'renders index view' do
