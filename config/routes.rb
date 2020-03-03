@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   resources :users, only: :show
 
-  resources :characters, only: %i[ index show new create ]
+  resources :characters, only: %i[ index show new create destroy ]
 end
