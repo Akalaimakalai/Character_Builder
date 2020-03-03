@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   resources :users, only: :show
 
-  resources :characters, only: :new
+  resources :characters, only: %i[ show new create ]
 end

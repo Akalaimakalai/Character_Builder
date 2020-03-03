@@ -1,8 +1,8 @@
 <h1>Шаг 1.</h1>
 <h1>Выберите имя для своего персонажа</h1>
 
-<%= form_with model: [current_user, @charecter], local: true do |form| %>
-  <%= render "devise/shared/error_messages", resource: @charecter %>
+<%= form_with model: @character, local: true do |form| %>
+  <%= render "devise/shared/error_messages", resource: @character %>
 
   <p>
     <%= form.label :name %>:<br>
