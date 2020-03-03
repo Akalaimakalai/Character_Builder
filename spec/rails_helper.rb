@@ -41,7 +41,7 @@ RSpec.configure do |config|
   # Add devise's helpers for controllers
   config.include Devise::Test::ControllerHelpers, type: :controller
   # Add my own helpers
-  # config.include ControllerHelpers, type: :controller
+  config.include ControllerHelpers, type: :controller
   config.include FeatureHelpers, type: :feature
   # config.include ApiHelpers, type: :request
   # Capybara runs js tests in browser

@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @character = Character.find(params[:id])
