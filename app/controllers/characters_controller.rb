@@ -24,7 +24,6 @@ class CharactersController < ApplicationController
 
   def destroy
     @character.destroy if @character.creator?(current_user)
-    redirect_to characters_path
   end
 
   private

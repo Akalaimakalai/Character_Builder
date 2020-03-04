@@ -131,12 +131,12 @@ RSpec.describe CharactersController, type: :controller do
         before { login(user) }
 
         it 'deletes the character' do
-          expect { delete :destroy, params: { id: character } }.to change(Character, :count).by(-1)
+          expect { delete :destroy, params: { id: character }, format: :js }.to change(Character, :count).by(-1)
         end
 
-        it 'redirects to characters_path' do
-          delete :destroy, params: { id: character }
-          expect(response).to redirect_to characters_path
+        it 'renders destroy view' do
+          delete :destroy, params: { id: character }, format: :js
+          expect(response).to render_template :destroy
         end
       end
 
@@ -146,12 +146,12 @@ RSpec.describe CharactersController, type: :controller do
         before { login(user2) }
 
         it 'does not delete the character' do
-          expect { delete :destroy, params: { id: character } }.to_not change(Character, :count)
+          expect { delete :destroy, params: { id: character }, format: :js }.to_not change(Character, :count)
         end
 
-        it 'redirects to characters_path' do
-          delete :destroy, params: { id: character }
-          expect(response).to redirect_to characters_path
+        it 'renders destroy view' do
+          delete :destroy, params: { id: character }, format: :js
+          expect(response).to render_template :destroy
         end
       end
     end

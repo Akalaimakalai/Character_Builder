@@ -42,6 +42,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim-rails'
 # Authentication
 gem 'devise'
+# JS framework
+gem 'jquery-rails'
 
 # ---END---
 

@@ -4,7 +4,7 @@ feature 'User can delete his character', %q{
   In order to delete a useless character
   As the creator of this character
   i'd like to be able to delete it
-} do
+}, js: true do
 
   given(:user) { create(:user) }
 
@@ -22,7 +22,6 @@ feature 'User can delete his character', %q{
       click_on 'Удалить'
 
       expect(page).to_not have_link(character.name)
-      expect(page).to have_content('У вас нет персонажей')
     end
 
     scenario 'is NOT the creator of this character' do
