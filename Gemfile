@@ -40,10 +40,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Instead erb
 gem 'slim-rails'
-# Authentication
-gem 'devise'
 # JS framework
 gem 'jquery-rails'
+# Authentication
+gem 'devise'
+# Authorization
+gem 'cancancan'
 
 # ---END---
 

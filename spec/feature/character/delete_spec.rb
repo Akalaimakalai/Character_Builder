@@ -27,6 +27,7 @@ feature 'User can delete his character', %q{
     scenario 'is NOT the creator of this character' do
       sign_in(user2)
       visit characters_path
+      expect(page).to_not have_link(character.name)
       expect(page).to_not have_link('Удалить')
     end
   end

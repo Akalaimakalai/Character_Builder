@@ -2,6 +2,8 @@ class CharactersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_character, only: %i[ show destroy ]
 
+  authorize_resource
+
   def index
     @characters = current_user.characters
   end
@@ -23,7 +25,7 @@ class CharactersController < ApplicationController
   end
 
   def destroy
-    @character.destroy if @character.creator?(current_user)
+    @character.destroy
   end
 
   private

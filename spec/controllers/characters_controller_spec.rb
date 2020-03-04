@@ -149,9 +149,9 @@ RSpec.describe CharactersController, type: :controller do
           expect { delete :destroy, params: { id: character }, format: :js }.to_not change(Character, :count)
         end
 
-        it 'renders destroy view' do
+        it 'redirects to root' do
           delete :destroy, params: { id: character }, format: :js
-          expect(response).to render_template :destroy
+          expect(response).to redirect_to root_path
         end
       end
     end
