@@ -15,7 +15,10 @@ RSpec.describe Character do
     let(:another_character) { create(:character) }
 
     context "Character" do
-      it { should be_able_to :create, user_character }
+      it { should be_able_to :read, user_character }
+      it { should_not be_able_to :read, another_character }
+
+      it { should be_able_to :create, Character }
 
       it { should be_able_to :destroy, user_character }
       it { should_not be_able_to :destroy, another_character }
