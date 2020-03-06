@@ -1,5 +1,6 @@
 class Character < ApplicationRecord
   before_save :calculate_modifiers
+  before_save :calculate_armor_class
 
   MOD_TABLE = {
     1 => '-5',
@@ -31,11 +32,15 @@ class Character < ApplicationRecord
   private
 
   def calculate_modifiers
-    self.str_modifier = MOD_TABLE[self.strength]
-    self.dex_modifier = MOD_TABLE[self.dexterity]
-    self.con_modifier = MOD_TABLE[self.constitution]
-    self.int_modifier = MOD_TABLE[self.intelligence]
-    self.wis_modifier = MOD_TABLE[self.wisdom]
-    self.cha_modifier = MOD_TABLE[self.charisma]
+    self.str_modifier = MOD_TABLE[strength]
+    self.dex_modifier = MOD_TABLE[dexterity]
+    self.con_modifier = MOD_TABLE[constitution]
+    self.int_modifier = MOD_TABLE[intelligence]
+    self.wis_modifier = MOD_TABLE[wisdom]
+    self.cha_modifier = MOD_TABLE[charisma]
+  end
+
+  def calculate_armor_class
+    self.armor_class = 10 + dex_modifier.to_i
   end
 end

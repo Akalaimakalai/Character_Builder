@@ -24,6 +24,8 @@ feature 'User can create character', %q{
       expect(page).to have_content('Имя: TestCharName')
       expect(page).to have_content('Уровень: 1')
 
+      expect(page).to have_content('КД: 9')
+
       within '.characteristics' do
         expect(page).to have_content('Сила: 8 (-1)')
         expect(page).to have_content('Ловкость: 8 (-1)')

@@ -2,6 +2,9 @@
 <h2>Имя: <%= @character.name %></h2>
 <h3>Уровень: <%= @character.level %></h2>
 
+<p>Инициатива: <%= @character.dex_modifier %></p>
+<p>КД: <%= @character.armor_class %></p>
+
 <%= render 'characters/characteristics_list', resource: @character %>
 
 <%= render 'characters/saving_throws_list', resource: @character %>
