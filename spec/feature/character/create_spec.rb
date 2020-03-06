@@ -22,6 +22,15 @@ feature 'User can create character', %q{
       click_on 'Создать'
 
       expect(page).to have_content('Имя: TestCharName')
+      within '.characteristic' do
+        expect(page).to have_content('уровень: 1')
+        expect(page).to have_content('Сила: 8 (-1)')
+        expect(page).to have_content('Ловкость: 8 (-1)')
+        expect(page).to have_content('Телосложение: 8 (-1)')
+        expect(page).to have_content('Интелект: 8 (-1)')
+        expect(page).to have_content('Мудрость: 8 (-1)')
+        expect(page).to have_content('Харизма: 8 (-1)')
+      end
     end
 
     scenario 'create character with invalid params' do
