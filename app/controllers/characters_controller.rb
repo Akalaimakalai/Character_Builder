@@ -8,9 +8,7 @@ class CharactersController < ApplicationController
     @characters = current_user.characters
   end
 
-  def show
-    # binding.pry
-  end
+  def show; end
 
   def new
     @character = current_user.characters.new
