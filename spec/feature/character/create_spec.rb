@@ -22,8 +22,9 @@ feature 'User can create character', %q{
       click_on 'Создать'
 
       expect(page).to have_content('Имя: TestCharName')
-      within '.characteristic' do
-        expect(page).to have_content('уровень: 1')
+      expect(page).to have_content('Уровень: 1')
+
+      within '.characteristics' do
         expect(page).to have_content('Сила: 8 (-1)')
         expect(page).to have_content('Ловкость: 8 (-1)')
         expect(page).to have_content('Телосложение: 8 (-1)')
