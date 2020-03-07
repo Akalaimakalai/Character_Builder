@@ -1,0 +1,7 @@
+<li class="character" data-character-id="<%= character.id %>">
+  <%= link_to character.name, character_path(character) %> | <%= link_to 'Удалить', character_path(character),
+                                                                                    method: :delete,
+                                                                                    class: "delete-char-link",
+                                                                                    remote: true,
+                                                                                    data: { character_id: character.id } %>
+</li>

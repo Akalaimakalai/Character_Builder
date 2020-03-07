@@ -1,0 +1,14 @@
+<h1>Шаг 1.</h1>
+<h1>Выберите имя для своего персонажа</h1>
+
+<%= form_with model: @character, local: true do |form| %>
+  <%= render "devise/shared/error_messages", resource: @character %>
+
+  <p>
+    <%= form.label :name %>:<br>
+    <%= form.text_field :name%>
+  </p>
+
+  <p><%= form.submit 'Создать' %></p>
+<% end %>
+<%= link_to 'Назад', user_path(current_user) %>

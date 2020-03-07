@@ -36,14 +36,34 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# ===MY GEMS===
+
+# Instead erb
+gem 'slim-rails'
+# JS framework
+gem 'jquery-rails'
+# Authentication
+gem 'devise'
+# Authorization
+gem 'cancancan'
+
+# ---END---
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  #gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # === MY GEMS ===
-  # testing
-  gem 'rspec-rails'
+
+  # New test-gem
+  gem 'rspec-rails', '~> 4.0.0.beta3'
+  # Gem for creating test dataset
   gem 'factory_bot_rails'
+  # Library for stubbing and setting expectations on HTTP requests in Ruby.
+  gem 'webmock'
+  # Upgraded byebug (binding.pry)
+  gem 'pry-rails'
+  gem 'pry-byebug'
 
   # ---END---
 end
@@ -55,6 +75,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # ===MY GEMS===
+
+  # Auto opening letters from ActionMailer
+  gem "letter_opener"
+
+  # ---END---
 end
 
 group :test do
@@ -62,7 +89,21 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  #gem 'chromedriver-helper'
+
+  # ===MY GEMS===
+
+  # Test validations, associations, etc.
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+  # Byebug for tests (save_and_open_page)
+  gem 'launchy'
+  # Instead gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 4.0'
+  # Opening letters in tests
+  gem 'capybara-email'
+
+  # ---end---
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
